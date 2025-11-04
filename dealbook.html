@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Permabullish Dealbook – Confidential MicroSaaS & AI Listings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Permabullish Dealbook – confidential, curated pipeline of MicroSaaS and AI tools with anonymised profiles, ARR estimates, and buyer-ready metrics.">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #050816;
+      --bg-alt: #070b1a;
+      --bg-card: #0b1120;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --accent-strong: #f97316;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --danger: #fb7185;
+      --success: #4ade80;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.75), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(from 160deg, #22c55e, #38bdf8, #a855f7, #f97316, #22c55e);
+      padding: 1px;
+    }
+
+    .logo-inner {
+      height: 100%;
+      width: 100%;
+      border-radius: inherit;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Space Grotesk", system-ui;
+      font-size: 0.9rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .logo-text-main {
+      font-family: "Space Grotesk", system-ui;
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo-text-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color 0.18s ease, opacity 0.18s ease;
+      opacity: 0.85;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    .nav-links .active {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.7rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #22c55e, #0ea5e9);
+      border-color: rgba(56, 189, 248, 0.15);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 18px 60px rgba(15, 23, 42, 0.7), 0 0 0 6px rgba(56, 189, 248, 0.15);
+      color: #0b1120;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 1), 0 24px 70px rgba(15, 23, 42, 0.9), 0 0 0 8px rgba(56, 189, 248, 0.2);
+      filter: brightness(1.03);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(148, 163, 184, 0.4);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 3.5rem 0 2.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+    }
+
+    .hero-title {
+      font-family: "Space Grotesk", system-ui;
+      font-size: clamp(2.3rem, 3.1vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(to right, #22c55e, #06b6d4, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 1.6rem;
+      max-width: 32rem;
+    }
+
+    .hero-subtitle strong {
+      color: #e5e7eb;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-footnote {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-footnote strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-card {
+      border-radius: 1.3rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
+      padding: 1.1rem 1.2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 22px 70px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.45rem;
+    }
+
+    .hero-card-text {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-metric {
+      border-radius: 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 0.55rem 0.7rem;
+    }
+
+    .hero-metric-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-metric-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-header {
+      max-width: 40rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", system-ui;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-description {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .dealbook-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+      max-width: 30rem;
+    }
+
+    .dealbook-note strong {
+      color: var(--text-main);
+    }
+
+    .toggle-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.8rem;
+    }
+
+    .toggle-pill {
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      cursor: default;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .toggle-pill.active {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.8);
+      color: var(--accent);
+    }
+
+    .listing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .listing-grid-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.92);
+      padding: 1rem 1rem;
+      font-size: 0.85rem;
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .listing-grid-card:hover {
+      border-color: rgba(56, 189, 248, 0.85);
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 50px rgba(15, 23, 42, 0.9);
+    }
+
+    .listing-grid-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.4rem;
+      align-items: center;
+    }
+
+    .listing-grid-name {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .listing-grid-pill {
+      font-size: 0.72rem;
+      border-radius: 999px;
+      padding: 0.1rem 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .listing-grid-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .listing-grid-meta strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .listing-grid-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .listing-grid-tag {
+      border-radius: 999px;
+      padding: 0.12rem 0.45rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+    }
+
+    .listing-description {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .blurred-name {
+      position: relative;
+      filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .blurred-name::after {
+      content: "Confidential";
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateY(-115%);
+      font-size: 0.7rem;
+      padding: 0.08rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+    }
+
+    .cta-final {
+      text-align: center;
+      padding: 3rem 0 2.6rem;
+    }
+
+    .cta-final-title {
+      font-family: "Space Grotesk", system-ui;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+
+    .cta-final-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 28rem;
+      margin: 0 auto 1.4rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-bottom: 1.6rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 1.4rem 0 1.8rem;
+      margin-top: auto;
+      background: rgba(2, 6, 23, 0.98);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.9rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.4rem;
+      }
+
+      .listing-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        position: static;
+      }
+
+      .nav {
+        gap: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <a href="/" class="logo">
+          <div class="logo-mark">
+            <div class="logo-inner">PB</div>
+          </div>
+          <div>
+            <div class="logo-text-main">Permabullish</div>
+            <div class="logo-text-sub">Investment Bank for the AI Age</div>
+          </div>
+        </a>
+        <div class="nav-cta">
+          <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="#" class="active">Dealbook</a>
+          </div>
+          <a href="https://forms.zoho.in/mailmaya1/form/PermabullishListYourStartupHere" target="_blank" rel="noopener noreferrer" class="btn btn-outline">List My Startup</a>
+          <a href="mailto:mail@mayaskara.com" target="_blank" class="btn btn-primary">Get Buyer Access</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Live Dealbook • MicroSaaS & AI tools
+          </div>
+          <h1 class="hero-title">
+            Confidential <span class="highlight">deal flow</span> for internet-native businesses.
+          </h1>
+          <p class="hero-subtitle">
+            A curated pipeline of <strong>MicroSaaS, AI tools, and vertical SaaS</strong> from indie builders and lean teams – anonymised publicly, fully revealed to serious buyers.
+          </p>
+          <div class="hero-cta-row">
+            <a href="https://forms.zoho.in/mailmaya1/form/PermabullishListYourStartupHere" target="_blank" rel="noopener noreferrer" class="btn btn-primary">List My Startup</a>
+            <a href="mailto:mail@mayaskara.com" target="_blank" class="btn btn-outline">Request Buyer Access</a>
+          </div>
+          <div class="hero-footnote">
+            <strong>Names are blurred by default.</strong> Qualified buyers get full profiles after a quick intro call.
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-title">Today’s snapshot</div>
+          <p class="hero-card-text">
+            These anonymised tiles are representative of the kind of products and metrics inside the live Dealbook.
+          </p>
+          <div class="hero-metrics">
+            <div class="hero-metric">
+              <div class="hero-metric-label">Listings</div>
+              <div class="hero-metric-value">30+ anonymised profiles</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-label">ARR range</div>
+              <div class="hero-metric-value">$5K – $1.5M+</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-label">Focus</div>
+              <div class="hero-metric-value">AI-first & MicroSaaS</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-label">Deal types</div>
+              <div class="hero-metric-value">Raising • Full exits</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Deal tiles -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Dealbook</div>
+          <h2 class="section-title">Anonymised MicroSaaS & AI listings.</h2>
+          <p class="section-description">
+            Each tile shows what the company does, rough ARR, launch timing, and estimated customer count — enough to know if it fits your thesis, without revealing names publicly.
+          </p>
+          <p class="dealbook-note">
+            <strong>Important:</strong> All figures are directional, rounded, and presented as estimates. Detailed data rooms are shared only after mutual NDA and approval.
+          </p>
+        </div>
+
+        <div class="toggle-row">
+          <div class="toggle-pill active">All deals</div>
+          <div class="toggle-pill">AI tools & LLM wrappers</div>
+          <div class="toggle-pill">MicroSaaS & vertical SaaS</div>
+          <div class="toggle-pill">6–7 figure ARR</div>
+          <div class="toggle-pill">For-sale & micro-acquisitions</div>
+        </div>
+
+        <div class="listing-grid">
+
+          <!-- 1 MiniCourse Generator -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">AI Mini-Course Studio</span>
+              </div>
+              <span class="listing-grid-pill">AI course creation · Growing</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $660K</strong> ARR • Launched ~2023 • ~400 paying creators
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">AI</span>
+              <span class="listing-grid-tag">EdTech</span>
+              <span class="listing-grid-tag">MicroSaaS</span>
+            </div>
+            <p class="listing-description">
+              AI engine that turns a short brief into fully-structured mini-courses — lessons, outlines, and resources that creators use as lead magnets and paid workshops.
+            </p>
+          </div>
+
+          <!-- 2 LedgerBoox -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Bank Statement Parser</span>
+              </div>
+              <span class="listing-grid-pill">AI back-office · Early revenue</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $5K</strong> ARR • Launched ~2023 • 30–60 SME customers
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Fintech</span>
+              <span class="listing-grid-tag">Bookkeeping</span>
+              <span class="listing-grid-tag">AI OCR</span>
+            </div>
+            <p class="listing-description">
+              Converts raw PDF bank statements and receipts into clean CSV/Excel for accountants and small businesses, with AI-powered categorisation and export to accounting tools.
+            </p>
+          </div>
+
+          <!-- 3 SEO Flight Deck -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">AI SEO Flight Console</span>
+              </div>
+              <span class="listing-grid-pill">AI marketing · Early revenue</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $3.5K</strong> ARR • Launched ~2023 • 20–40 paying sites
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">SEO</span>
+              <span class="listing-grid-tag">Marketing</span>
+              <span class="listing-grid-tag">SMB</span>
+            </div>
+            <p class="listing-description">
+              A cockpit for non-technical founders to plan, cluster, and track SEO campaigns with AI-generated suggestions instead of spreadsheets.
+            </p>
+          </div>
+
+          <!-- 4 Interview Solver -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Live Coding Interview Copilot</span>
+              </div>
+              <span class="listing-grid-pill">Career tech · Early revenue</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $9K</strong> ARR • Launched ~2023 • 100–150 active users
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Developer tools</span>
+              <span class="listing-grid-tag">AI</span>
+              <span class="listing-grid-tag">B2C</span>
+            </div>
+            <p class="listing-description">
+              Browser-side assistant that whispers hints and solution outlines during live technical interviews, targeting FAANG-style question banks.
+            </p>
+          </div>
+
+          <!-- 5 ReceiptAI -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Receipts-to-Books Bot</span>
+              </div>
+              <span class="listing-grid-pill">AI bookkeeping · Early revenue</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $8.5K</strong> ARR • Launched ~2022 • 100–200 subscribers
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">MicroSaaS</span>
+              <span class="listing-grid-tag">SMB</span>
+              <span class="listing-grid-tag">Automation</span>
+            </div>
+            <p class="listing-description">
+              Users snap or text photos of receipts; the service parses, categorises, and pushes transactions into accounting platforms with minimal human oversight.
+            </p>
+          </div>
+
+          <!-- 6 Camp -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Infinite Blog Studio</span>
+              </div>
+              <span class="listing-grid-pill">AI content · Early revenue</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $6.6K</strong> ARR • Launched ~2022 • 30–50 active domains
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Content</span>
+              <span class="listing-grid-tag">AI</span>
+              <span class="listing-grid-tag">SEO</span>
+            </div>
+            <p class="listing-description">
+              Internal AI blogging engine spun out as a product — generates and schedules long-form articles for niche sites at unlimited volumes.
+            </p>
+          </div>
+
+          <!-- 7 Blue Dot -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">AI Meeting Notes Layer</span>
+              </div>
+              <span class="listing-grid-pill">Team productivity · Growing</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $24K</strong> ARR • Launched ~2021 • 150+ paying teams
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">SaaS</span>
+              <span class="listing-grid-tag">Transcription</span>
+              <span class="listing-grid-tag">Chrome extension</span>
+            </div>
+            <p class="listing-description">
+              Chrome extension that records, transcribes, and summarises online meetings for distributed teams, with search across calls and action-item extraction.
+            </p>
+          </div>
+
+          <!-- 8 Mei -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">AI Voice Sales Team</span>
+              </div>
+              <span class="listing-grid-pill">AI voice · Early revenue</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $4K</strong> ARR • Launched ~2023 • 20–40 brands onboarded
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Sales</span>
+              <span class="listing-grid-tag">Voice AI</span>
+              <span class="listing-grid-tag">SMB</span>
+            </div>
+            <p class="listing-description">
+              Multi-language AI callers that run outbound sales calls 24/7, with natural-sounding voices and CRM integration.
+            </p>
+          </div>
+
+          <!-- 9 Customer Ping AI -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Problem Mention Radar</span>
+              </div>
+              <span class="listing-grid-pill">Lead gen · Very early</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $600</strong> ARR • Launched ~2024 • < 20 early adopters
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Social listening</span>
+              <span class="listing-grid-tag">Indie</span>
+            </div>
+            <p class="listing-description">
+              Monitors forums and social feeds for people describing problems that match a founder’s product, and pings them with links and context.
+            </p>
+          </div>
+
+          <!-- 10 Product AI Photo -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Virtual Product Photo Studio</span>
+              </div>
+              <span class="listing-grid-pill">E-commerce infra · Scaling</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $1.3M</strong> ARR • Launched ~2021 • 1,000+ brands served
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">AI imaging</span>
+              <span class="listing-grid-tag">Retail</span>
+              <span class="listing-grid-tag">SaaS</span>
+            </div>
+            <p class="listing-description">
+              High-throughput AI product photography platform with templates and animations that replaces traditional studio shoots for D2C brands.
+            </p>
+          </div>
+
+          <!-- 11 Carrd -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">One-Page Site Builder</span>
+              </div>
+              <span class="listing-grid-pill">Website builder · Mature</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $1M+ </strong> ARR • Launched ~2016 • Tens of thousands of users
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">No-code</span>
+              <span class="listing-grid-tag">Indie</span>
+              <span class="listing-grid-tag">B2C & B2B</span>
+            </div>
+            <p class="listing-description">
+              Ultra-simple one-page website builder used for portfolios, link-in-bio pages, and micro-landing pages with low-priced Pro plans.
+            </p>
+          </div>
+
+          <!-- 12 AnyTrack -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Multi-Channel Attribution Hub</span>
+              </div>
+              <span class="listing-grid-pill">Marketing infra · Profitable</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. mid-6 figure</strong> ARR • Launched ~2019 • Hundreds of agencies & brands
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Analytics</span>
+              <span class="listing-grid-tag">Performance marketing</span>
+            </div>
+            <p class="listing-description">
+              Tracks conversions and revenue across ads, affiliates, and funnels, then syncs clean events into analytics and ad platforms.
+            </p>
+          </div>
+
+          <!-- 13 SolidGigs -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Curated Freelance Leads Feed</span>
+              </div>
+              <span class="listing-grid-pill">Marketplace · Bootstrapped</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. low-6 figure</strong> ARR • Launched ~2017 • 1,000+ active subscribers
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Creator economy</span>
+              <span class="listing-grid-tag">Lead curation</span>
+            </div>
+            <p class="listing-description">
+              Hand-curated freelance job listings delivered as a subscription, helping independent workers skip generic job boards.
+            </p>
+          </div>
+
+          <!-- 14 Plutio -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Freelancer Operating System</span>
+              </div>
+              <span class="listing-grid-pill">Vertical SaaS · Growing</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. high-6 figure</strong> ARR • Launched ~2017 • Thousands of workspaces
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Agencies</span>
+              <span class="listing-grid-tag">Project management</span>
+              <span class="listing-grid-tag">Billing</span>
+            </div>
+            <p class="listing-description">
+              All-in-one suite for solo workers and small agencies: projects, CRM, proposals, invoicing, and client portals in a single interface.
+            </p>
+          </div>
+
+          <!-- 15 Plausible -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Privacy-First Analytics</span>
+              </div>
+              <span class="listing-grid-pill">Analytics · Bootstrapped</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. 7-figure</strong> ARR • Launched ~2019 • 10K+ paying sites
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Open-source</span>
+              <span class="listing-grid-tag">Compliance-friendly</span>
+            </div>
+            <p class="listing-description">
+              Lightweight, privacy-centric website analytics as an alternative to legacy tools, popular with EU companies and privacy-conscious brands.
+            </p>
+          </div>
+
+          <!-- 16 Zendesk (early-style listing) -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Customer Support Desk</span>
+              </div>
+              <span class="listing-grid-pill">CX infra · Scale-up</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Enterprise-scale</strong> ARR • Origin as lean SaaS • Global footprint
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">B2B SaaS</span>
+              <span class="listing-grid-tag">Customer support</span>
+            </div>
+            <p class="listing-description">
+              Cloud support desk that started as a simple ticketing micro-SaaS and grew into a standard for support teams worldwide.
+            </p>
+          </div>
+
+          <!-- 17 Punkt -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">One-Sentence Journal App</span>
+              </div>
+              <span class="listing-grid-pill">Consumer productivity · Niche</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. low-5 figure</strong> ARR • Launched ~2020 • Few thousand users
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Mobile</span>
+              <span class="listing-grid-tag">Wellness</span>
+            </div>
+            <p class="listing-description">
+              Minimalist journaling tool that encourages users to log one concise sentence per day to build a sustainable writing habit.
+            </p>
+          </div>
+
+          <!-- 18 PDFShift -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">HTML-to-PDF API</span>
+              </div>
+              <span class="listing-grid-pill">Devtool · MicroSaaS</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. mid-5 figure</strong> ARR • Launched ~2018 • Hundreds of developer accounts
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">API</span>
+              <span class="listing-grid-tag">Infrastructure</span>
+            </div>
+            <p class="listing-description">
+              Simple, reliable API for turning HTML into PDFs, used by SaaS apps for invoices, reports, and downloadable documents.
+            </p>
+          </div>
+
+          <!-- 19 SocialBee -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">SMB Social Scheduler</span>
+              </div>
+              <span class="listing-grid-pill">Social tools · Profitable</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. 7-figure</strong> ARR • Launched ~2016 • Thousands of paying customers
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Social media</span>
+              <span class="listing-grid-tag">Marketing</span>
+            </div>
+            <p class="listing-description">
+              Social publishing and analytics tool for small businesses and agencies with evergreen queues and client workspaces.
+            </p>
+          </div>
+
+          <!-- 20 Hypefury -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Creator Thread Engine</span>
+              </div>
+              <span class="listing-grid-pill">Creator tools · Growing</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. high-6 figure</strong> ARR • Launched ~2019 • Thousands of creators
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Social</span>
+              <span class="listing-grid-tag">Automation</span>
+            </div>
+            <p class="listing-description">
+              Growth and scheduling suite for long-form posts and threads, with funnels that automatically plug products and email lists.
+            </p>
+          </div>
+
+          <!-- 21 LearningStudioAI -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">AI Course Builder (LatAm)</span>
+              </div>
+              <span class="listing-grid-pill">AI EdTech · Growing</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $6K</strong> ARR • Launched ~2023 • 100–200 course creators
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Brazil</span>
+              <span class="listing-grid-tag">EdTech</span>
+              <span class="listing-grid-tag">AI</span>
+            </div>
+            <p class="listing-description">
+              AI-powered tool that converts a topic and a few bullet points into a structured online course with modules, lessons, and quizzes.
+            </p>
+          </div>
+
+          <!-- 22 Clarice.ai -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Language-Native Writing Copilot</span>
+              </div>
+              <span class="listing-grid-pill">AI writing · Scaling</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $70K+</strong> ARR • Launched ~2022 • 300K+ total users; thousands paying
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Brazil</span>
+              <span class="listing-grid-tag">Writing</span>
+              <span class="listing-grid-tag">B2C & B2B</span>
+            </div>
+            <p class="listing-description">
+              Region-specific AI writing assistant with templates and quality checks tuned to local language and style norms.
+            </p>
+          </div>
+
+          <!-- 23 ChatEdv -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">AI Legal Assistant (LatAm)</span>
+              </div>
+              <span class="listing-grid-pill">Vertical AI · Growing</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $150K+</strong> ARR • Launched ~2022 • 200–400 law firms
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">LegalTech</span>
+              <span class="listing-grid-tag">AI</span>
+            </div>
+            <p class="listing-description">
+              AI copilot for lawyers that answers questions, drafts documents, and automates routine workflows for small and mid-sized firms.
+            </p>
+          </div>
+
+          <!-- 24 Type In Mind -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Team AI Workspace</span>
+              </div>
+              <span class="listing-grid-pill">AI productivity · Scaling</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $350K+</strong> ARR • Launched ~2023 • Hundreds of team accounts
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Multi-LLM</span>
+              <span class="listing-grid-tag">B2B</span>
+            </div>
+            <p class="listing-description">
+              Shared AI workspace that lets teams use multiple foundation models behind a single interface, with templates and guardrails.
+            </p>
+          </div>
+
+          <!-- 25 ChipFast -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Startup Launch Toolkit</span>
+              </div>
+              <span class="listing-grid-pill">Founders tools · Growing</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. $200K+</strong> ARR • Launched ~2021 • 1K+ customers
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Templates</span>
+              <span class="listing-grid-tag">No-code</span>
+            </div>
+            <p class="listing-description">
+              Bundles of templates, landing pages, and playbooks to help founders spin up new products quickly, with optional AI components.
+            </p>
+          </div>
+
+          <!-- 26 Buttondown -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Minimal Newsletter Platform</span>
+              </div>
+              <span class="listing-grid-pill">Email SaaS · Indie</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. low-6 figure</strong> ARR • Launched ~2017 • Thousands of writers
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Email</span>
+              <span class="listing-grid-tag">Indie SaaS</span>
+            </div>
+            <p class="listing-description">
+              Lightweight newsletter tool built by a solo founder, focused on a clean interface, privacy, and developer-friendly features.
+            </p>
+          </div>
+
+          <!-- 27 Tally -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Notion-Style Form Builder</span>
+              </div>
+              <span class="listing-grid-pill">No-code · Bootstrapped</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. multi-7 figure</strong> ARR • Launched ~2020 • Tens of thousands of workspaces
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Forms</span>
+              <span class="listing-grid-tag">SaaS</span>
+            </div>
+            <p class="listing-description">
+              Simple, generous form builder that feels like writing a document, widely used by startups for surveys, signups, and lead capture.
+            </p>
+          </div>
+
+          <!-- 28 Lemon Squeezy -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Full-Stack SaaS Payments</span>
+              </div>
+              <span class="listing-grid-pill">Fintech · Growing</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. multi-7 figure</strong> ARR • Launched ~2021 • Thousands of SaaS & creators
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Billing</span>
+              <span class="listing-grid-tag">Tax & compliance</span>
+            </div>
+            <p class="listing-description">
+              Payments, subscriptions, tax, and licensing in one platform, built specifically for software products and digital sellers.
+            </p>
+          </div>
+
+          <!-- 29 Userlist -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">Lifecycle Messaging for SaaS</span>
+              </div>
+              <span class="listing-grid-pill">B2B SaaS · Bootstrapped</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>Est. 7-figure</strong> ARR • Launched ~2018 • Hundreds of SaaS customers
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Customer success</span>
+              <span class="listing-grid-tag">Email</span>
+            </div>
+            <p class="listing-description">
+              Behaviour-based email and in-app messaging platform built specifically for B2B SaaS products, focused on activation and retention.
+            </p>
+          </div>
+
+          <!-- 30 AI Mention Tool (for-sale micro-SaaS) -->
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">
+                <span class="blurred-name">AI Search Mention Tracker</span>
+              </div>
+              <span class="listing-grid-pill">For sale · Micro-acquisition</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>~$400</strong> ARR • Launched ~2024 • Early-stage B2B buyers
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">AI search</span>
+              <span class="listing-grid-tag">Monitoring</span>
+              <span class="listing-grid-tag">MicroSaaS</span>
+            </div>
+            <p class="listing-description">
+              Tracks when a brand or product is mentioned inside AI search tools and chatbots, then alerts marketers so they can shape prompts and presence.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section>
+      <div class="container">
+        <div class="cta-final">
+          <h2 class="cta-final-title">Want your startup to look like this?</h2>
+          <p class="cta-final-text">
+            If you’re building an AI tool or MicroSaaS with real users and revenue, we’ll package your metrics, anonymise the profile, and quietly place it in front of serious buyers.
+          </p>
+          <div class="cta-buttons">
+            <a href="https://forms.zoho.in/mailmaya1/form/PermabullishListYourStartupHere" target="_blank" rel="noopener noreferrer" class="btn btn-primary">List My Startup</a>
+            <a href="mailto:mail@mayaskara.com" target="_blank" class="btn btn-outline">I’m a Buyer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="year"></span> Permabullish. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="#">Dealbook</a>
+          <a href="mailto:mail@mayaskara.com">Contact</a>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
+
