@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Permabullish – The Investment Bank for the AI Age</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Permabullish helps AI & MicroSaaS founders raise capital or get acquired, with a curated dealroom and flat 3% success fee.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #050816;
+      --bg-alt: #070b1a;
+      --bg-card: #0b1120;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --accent-strong: #f97316;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --danger: #fb7185;
+      --success: #4ade80;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.75), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(from 160deg, #22c55e, #38bdf8, #a855f7, #f97316, #22c55e);
+      padding: 1px;
+    }
+
+    .logo-inner {
+      height: 100%;
+      width: 100%;
+      border-radius: inherit;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Space Grotesk", system-ui;
+      font-size: 0.9rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .logo-text-main {
+      font-family: "Space Grotesk", system-ui;
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo-text-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color 0.18s ease, opacity 0.18s ease;
+      opacity: 0.85;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.7rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #22c55e, #0ea5e9);
+      border-color: rgba(56, 189, 248, 0.15);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9), 0 18px 60px rgba(15, 23, 42, 0.7), 0 0 0 6px rgba(56, 189, 248, 0.15);
+      color: #0b1120;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 1), 0 24px 70px rgba(15, 23, 42, 0.9), 0 0 0 8px rgba(56, 189, 248, 0.2);
+      filter: brightness(1.03);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(148, 163, 184, 0.4);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-pill-soft {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+    }
+
+    .hero-title {
+      font-family: "Space Grotesk", system-ui;
+      font-size: clamp(2.5rem, 3.4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(to right, #22c55e, #06b6d4, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+      max-width: 30rem;
+    }
+
+    .hero-subtitle strong {
+      color: #e5e7eb;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-footnote {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-footnote strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* Dashboard mock */
+
+    .hero-dashboard-wrapper {
+      position: relative;
+    }
+
+    .hero-blur-orbit {
+      position: absolute;
+      inset: -15%;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.5), transparent 60%),
+                  radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.4), transparent 55%);
+      opacity: 0.55;
+      filter: blur(26px);
+      z-index: -1;
+    }
+
+    .dashboard-card {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 25px 80px rgba(15, 23, 42, 0.95);
+      padding: 1.25rem 1.4rem 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .dashboard-title {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .status-pill {
+      font-size: 0.7rem;
+      padding: 0.16rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.18);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .dashboard-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .filter-pill {
+      font-size: 0.74rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .filter-pill.active {
+      border-color: rgba(56, 189, 248, 0.8);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--accent);
+    }
+
+    .filter-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .dashboard-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 0.9rem;
+    }
+
+    .listing-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .listing-card {
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      cursor: default;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+
+    .listing-card:hover {
+      border-color: rgba(56, 189, 248, 0.85);
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-1px);
+    }
+
+    .listing-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .listing-name {
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .listing-tag {
+      font-size: 0.7rem;
+      padding: 0.05rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+    }
+
+    .listing-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .listing-meta strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .dashboard-sidebar {
+      border-radius: 0.9rem;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      padding: 0.7rem 0.8rem;
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 0.45rem;
+      color: var(--text-muted);
+    }
+
+    .metric-row span:last-child {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .metric-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
+    }
+
+    .metric-pill {
+      font-size: 0.72rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    .mini-cta {
+      margin-top: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+    }
+
+    .mini-cta a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-header {
+      max-width: 40rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", system-ui;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-description {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* How it works */
+
+    .three-cols {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .step-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.92);
+      padding: 1.1rem 1.1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.6);
+      color: var(--accent);
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.7rem;
+    }
+
+    .step-title {
+      font-size: 0.98rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-text {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* Two-column sections */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .card-soft {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1.1rem 1.2rem;
+    }
+
+    .card-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 0.2rem;
+    }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .bullet-list {
+      margin-top: 0.5rem;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      padding-left: 1rem;
+    }
+
+    .bullet-list li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* Marketplace grid */
+
+    .listing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .listing-grid-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.92);
+      padding: 1rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .listing-grid-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .listing-grid-name {
+      font-weight: 500;
+    }
+
+    .listing-grid-pill {
+      font-size: 0.72rem;
+      border-radius: 999px;
+      padding: 0.1rem 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    .listing-grid-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .listing-grid-meta strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .listing-grid-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+    }
+
+    .listing-grid-tag {
+      border-radius: 999px;
+      padding: 0.12rem 0.45rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+    }
+
+    .toggle-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.8rem;
+    }
+
+    .toggle-pill {
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .toggle-pill.active {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.8);
+      color: var(--accent);
+    }
+
+    /* Comparison */
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr);
+      gap: 1.2rem;
+      max-width: 640px;
+    }
+
+    .comparison-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1.1rem 1.2rem;
+      font-size: 0.88rem;
+    }
+
+    .comparison-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .comparison-badge {
+      font-size: 0.72rem;
+      padding: 0.12rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .comparison-list {
+      padding-left: 1rem;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+    }
+
+    .comparison-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Pricing */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .pricing-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 1.4rem 1.3rem;
+    }
+
+    .pricing-label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 0.22rem;
+    }
+
+    .pricing-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .pricing-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .pricing-price {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .pricing-tagline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Trust & CTA */
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1.8rem;
+      align-items: start;
+    }
+
+    .mini-list {
+      padding-left: 1rem;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .mini-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .cta-final {
+      text-align: center;
+      padding: 3rem 0 2.6rem;
+    }
+
+    .cta-final-title {
+      font-family: "Space Grotesk", system-ui;
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+
+    .cta-final-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 28rem;
+      margin: 0 auto 1.4rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .founder-strip {
+      max-width: 28rem;
+      margin: 0 auto;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 0.6rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .founder-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: linear-gradient(to bottom right, #22c55e, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #020617;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .founder-strip-name {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 1.4rem 0 1.8rem;
+      margin-top: auto;
+      background: rgba(2, 6, 23, 0.98);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.9rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .two-col,
+      .pricing-grid,
+      .trust-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.4rem;
+      }
+
+      .hero-grid {
+        gap: 2.1rem;
+      }
+
+      .listing-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        position: static;
+      }
+
+      .nav {
+        gap: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+
+      .three-cols {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .listing-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.1rem;
+      }
+
+      .pricing-grid {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="logo">
+          <div class="logo-mark">
+            <div class="logo-inner">PB</div>
+          </div>
+          <div>
+            <div class="logo-text-main">Permabullish</div>
+            <div class="logo-text-sub">Investment Bank for the AI Age</div>
+          </div>
+        </a>
+        <div class="nav-cta">
+          <div class="nav-links">
+            <a href="#how-it-works">How it works</a>
+            <a href="#founders">For founders</a>
+            <a href="#buyers">For buyers</a>
+            <a href="#pricing">Pricing</a>
+          </div>
+          <a href="#list-startup" class="btn btn-outline">Log In</a>
+          <a href="https://forms.zoho.in/mailmaya1/form/PermabullishListYourStartupHere" target="_blank" rel="noopener noreferrer" class="btn btn-primary">List My Startup</a>
+          <a href="mailto:mail@mayaskara.com" target="_blank" class="btn btn-primary">Get Buyer Access</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Liquidity infrastructure for AI & MicroSaaS
+          </div>
+          <h1 class="hero-title">
+            The <span class="highlight">dealroom</span> for AI & MicroSaaS founders.
+          </h1>
+          <p class="hero-subtitle">
+            Bring your <strong>traction, users, and revenue</strong>. We match you with serious
+            <strong>funders or buyers</strong>, and help you close in weeks – for a flat
+            <strong>3% success fee</strong>.
+          </p>
+          <div class="hero-cta-row">
+            <a href="https://forms.zoho.in/mailmaya1/form/PermabullishListYourStartupHere" target="_blank" rel="noopener noreferrer" class="btn btn-primary">List My Startup</a>
+            <a href="mailto:mail@mayaskara.com" target="_blank" class="btn btn-outline">Browse Deals as Buyer</a>
+          </div>
+          <div class="hero-footnote">
+            <strong>Ex–Investment Banker, $10B+ M&amp;A</strong> • Built for AI tools & MicroSaaS • No retainers, ever.
+          </div>
+        </div>
+
+        <!-- Dashboard mock -->
+        <div class="hero-dashboard-wrapper">
+          <div class="hero-blur-orbit"></div>
+          <div class="dashboard-card">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                Live Dealbook
+                <span class="status-pill">Active</span>
+              </div>
+              <span class="btn-pill-soft">
+                <span class="filter-dot"></span>
+                24 Founders online
+              </span>
+            </div>
+
+            <div class="dashboard-filters">
+              <span class="filter-pill active">All deals</span>
+              <span class="filter-pill">Raising capital</span>
+              <span class="filter-pill">Full acquisition</span>
+              <span class="filter-pill">AI / LLM</span>
+              <span class="filter-pill">MicroSaaS &lt; $50K MRR</span>
+            </div>
+
+            <div class="dashboard-main">
+              <div class="listing-list">
+                <div class="listing-card">
+                  <div class="listing-top">
+                    <div class="listing-name">AI Lead Enrichment Engine</div>
+                    <div class="listing-tag">Raising Seed</div>
+                  </div>
+                  <div class="listing-meta">
+                    <span><strong>$18K</strong> MRR</span>
+                    <span>US / EU B2B</span>
+                    <span>Ask: <strong>4.2× ARR</strong></span>
+                  </div>
+                </div>
+
+                <div class="listing-card">
+                  <div class="listing-top">
+                    <div class="listing-name">Shopify Returns Optimizer</div>
+                    <div class="listing-tag">Full Exit</div>
+                  </div>
+                  <div class="listing-meta">
+                    <span><strong>$2.5K</strong> MRR</span>
+                    <span>90% gross margin</span>
+                    <span>Churn &lt; 3%</span>
+                  </div>
+                </div>
+
+                <div class="listing-card">
+                  <div class="listing-top">
+                    <div class="listing-name">Browser-based LLM Research Copilot</div>
+                    <div class="listing-tag">Open to Acquihire</div>
+                  </div>
+                  <div class="listing-meta">
+                    <span>15K MAUs</span>
+                    <span><strong>$8K</strong> MRR</span>
+                    <span>DevTools / Productivity</span>
+                  </div>
+                </div>
+
+                <div class="listing-card">
+                  <div class="listing-top">
+                    <div class="listing-name">Vertical CRM for Indie Agencies</div>
+                    <div class="listing-tag">Raising Growth</div>
+                  </div>
+                  <div class="listing-meta">
+                    <span><strong>$40K</strong> MRR</span>
+                    <span>NRR 120%</span>
+                    <span>Ask: <strong>$4.5M</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="dashboard-sidebar">
+                <div class="metric-row">
+                  <span>Active listings</span>
+                  <span>38</span>
+                </div>
+                <div class="metric-row">
+                  <span>Deal value range</span>
+                  <span>$100K – $10M</span>
+                </div>
+                <div class="metric-row">
+                  <span>Avg time to LOI</span>
+                  <span>21 days</span>
+                </div>
+                <div class="metric-pill-row">
+                  <span class="metric-pill">Confidential profiles</span>
+                  <span class="metric-pill">Curated buyers</span>
+                  <span class="metric-pill">Flat 3% fee</span>
+                </div>
+                <div class="mini-cta">
+                  <span>List free, pay only on success.</span>
+                  <a href="https://forms.zoho.in/mailmaya1/form/PermabullishListYourStartupHere" target="_blank" rel="noopener noreferrer">Start listing →</a>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">How it works</div>
+          <h2 class="section-title">From metrics to term sheet in three steps.</h2>
+          <p class="section-description">
+            We package investment banking into a simple flow for internet-native founders.
+          </p>
+        </div>
+
+        <div class="three-cols">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title">Submit your metrics</div>
+            <div class="step-text">
+              Share your MRR, users, stack, and what you want – fundraise, full exit, or secondaries.
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">We match you</div>
+            <div class="step-text">
+              We quietly circulate your profile to vetted buyers, funds, and holdcos.
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">You negotiate & close</div>
+            <div class="step-text">
+              You control the deal. We help with structure, intros, and price sanity – for 3% on success.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- For founders / buyers -->
+    <section id="founders">
+      <div class="container two-col">
+        <div>
+          <div class="section-eyebrow">For founders</div>
+          <h2 class="section-title">Turn your product into a real asset.</h2>
+          <p class="section-description" style="margin-bottom:1.1rem;">
+            If you’re shipping, growing, and customers pay you every month, there’s a market for your startup.
+          </p>
+
+          <div class="card-soft">
+            <div class="card-label">Why founders use Permabullish</div>
+            <div class="card-title">Liquidity without leaving your laptop.</div>
+            <p class="card-text">
+              We’re the investment bank for AI tools and MicroSaaS, not just $50M+ corporates.
+            </p>
+            <ul class="bullet-list">
+              <li>Price guidance based on similar deals and multiples.</li>
+              <li>Choose full exit, majority sale, or growth capital.</li>
+              <li>Option to keep operating or hand over completely.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="buyers">
+          <div class="section-eyebrow">For buyers & funds</div>
+          <h2 class="section-title" style="font-size:1.4rem;margin-bottom:0.4rem;">
+            High-signal deal flow for AI-native businesses.
+          </h2>
+          <p class="section-description" style="margin-bottom:1rem;">
+            A private pipe of AI and SaaS deals that never hits noisy public marketplaces.
+          </p>
+
+          <div class="card-soft">
+            <div class="card-label">Why buyers subscribe</div>
+            <div class="card-title">One channel for curated AI & SaaS deals.</div>
+            <p class="card-text">
+              Built for holdcos, funds, and strategic acquirers that care about unit economics.
+            </p>
+            <ul class="bullet-list">
+              <li>Filter by MRR, niche, geography, tech stack.</li>
+              <li>Structured deal data instead of messy email chains.</li>
+              <li>Warm intros only – no spray-and-pray blasts.</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:0.8rem;">
+            <a href="mailto:mail@mayaskara.com" target="_blank" class="btn btn-outline">Get Buyer Access</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marketplace snapshot -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Live marketplace snapshot</div>
+          <h2 class="section-title">A taste of the deal flow.</h2>
+          <p class="section-description">
+            Listings change constantly, but this is the kind of pipeline buyers see inside.
+          </p>
+        </div>
+
+        <div class="toggle-row">
+          <div class="toggle-pill active">All deals</div>
+          <div class="toggle-pill">Raising capital</div>
+          <div class="toggle-pill">Full exits</div>
+          <div class="toggle-pill">AI / LLM tools</div>
+        </div>
+
+        <div class="listing-grid">
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">AI Sales Outreach Copilot</div>
+              <span class="listing-grid-pill">Raising Seed</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>$12K</strong> MRR • 78 B2B customers • 15% MoM growth
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">B2B SaaS</span>
+              <span class="listing-grid-tag">Sales</span>
+              <span class="listing-grid-tag">LLM</span>
+            </div>
+          </div>
+
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">Stripe Analytics MicroSaaS</div>
+              <span class="listing-grid-pill">Full Exit</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>$3.2K</strong> MRR • 93% gross margin • Indie build
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">MicroSaaS</span>
+              <span class="listing-grid-tag">Fintech</span>
+            </div>
+          </div>
+
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">AI Interview Screener</div>
+              <span class="listing-grid-pill">Acquihire</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>30K</strong> monthly sessions • HRTech • warm enterprise pipeline
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">AI</span>
+              <span class="listing-grid-tag">HRTech</span>
+            </div>
+          </div>
+
+          <div class="listing-grid-card">
+            <div class="listing-grid-header">
+              <div class="listing-grid-name">Docs & Tasks for Agencies</div>
+              <span class="listing-grid-pill">Growth Round</span>
+            </div>
+            <div class="listing-grid-meta">
+              <strong>$25K</strong> MRR • 5-person team • NRR 118%
+            </div>
+            <div class="listing-grid-tags">
+              <span class="listing-grid-tag">Collaboration</span>
+              <span class="listing-grid-tag">Agency vertical</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Why Permabullish</div>
+          <h2 class="section-title">Investment banking, rebuilt for small-but-serious deals.</h2>
+          <p class="section-description">
+            Not a Flippa clone, not a Wall Street dinosaur – something in between, built for your scale.
+          </p>
+        </div>
+
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <div class="comparison-title">Why founders and buyers choose us.</div>
+            <div class="comparison-badge">How we’re different</div>
+            <ul class="comparison-list">
+              <li>No retainers – we earn only when your deal closes.</li>
+              <li>Focused on $100K – $10M AI & SaaS transactions.</li>
+              <li>Curated, human-vetted profiles instead of open-for-all listings.</li>
+              <li>Transparent, productized process instead of vague “relationship” talk.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Pricing</div>
+          <h2 class="section-title">Simple, transparent, and aligned with outcomes.</h2>
+          <p class="section-description">
+            One model. No hidden hooks.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card" id="list-startup">
+            <div class="pricing-label">For founders</div>
+            <div class="pricing-title">List free. Pay on success.</div>
+            <p class="pricing-text">
+              No fees to explore or list. You only pay when you sign.
+            </p>
+            <div class="pricing-price">
+              <strong>Flat 3% of the final deal value</strong>.
+            </div>
+            <p class="pricing-tagline">
+              Includes curation, intros, and basic deal support.
+            </p>
+            <div style="margin-top:1rem;display:flex;gap:0.6rem;flex-wrap:wrap;">
+              <a href="https://forms.zoho.in/mailmaya1/form/PermabullishListYourStartupHere" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Start Listing</a>
+              <a href="https://cal.com/pranshumaan-vtjpre/15min" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Talk to Us</a>
+            </div>
+          </div>
+
+          <div class="pricing-card" id="buyer-access">
+            <div class="pricing-label">For buyers & funds</div>
+            <div class="pricing-title">Subscribe to deal flow.</div>
+            <p class="pricing-text">
+              Get a tuned pipeline of AI & SaaS deals that match your cheque size and thesis.
+            </p>
+            <div class="pricing-price">
+              Custom subscriptions for funds, holdcos, and strategic acquirers.
+            </div>
+            <p class="pricing-tagline">
+              Tell us your range and focus; we’ll configure the feed accordingly.
+            </p>
+            <div style="margin-top:1rem;">
+              <a href="mailto:mail@mayaskara.com" target="_blank" class="btn btn-outline">Request Buyer Access</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust & contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="trust-grid">
+          <div>
+            <div class="section-eyebrow">Trust & process</div>
+            <h2 class="section-title">Confidential and curated by design.</h2>
+            <p class="section-description" style="margin-bottom:0.8rem;">
+              Every deal goes through a quick sanity check before we ever show it to buyers.
+            </p>
+            <ul class="mini-list">
+              <li>Anonymous profiles possible until you’re ready to reveal details.</li>
+              <li>Basic guidance on what to include in your data room.</li>
+              <li>Both sides screened to minimize time-wasters and tourists.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="card-soft">
+              <div class="card-label">Start the conversation</div>
+              <div class="card-title">Ready to talk about your deal?</div>
+              <p class="card-text">
+                Send us a short note with your product, MRR, and what you’re exploring
+                (raise, exit, or both).
+              </p>
+              <ul class="bullet-list">
+                <li>Subject: <strong>“Permabullish Deal – [Product Name]”</strong></li>
+                <li>Include: stage, MRR, customers, and deal type.</li>
+              </ul>
+              <p class="card-text" style="margin-top:0.6rem;">
+                Use your contact form or drop an email to:
+                <a href="mailto:mail@mayaskara.com"><strong>mail@mayaskara.com</strong></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA / founder -->
+    <section>
+      <div class="container">
+        <div class="cta-final">
+          <h2 class="cta-final-title">Ready to make a deal?</h2>
+          <p class="cta-final-text">
+            If you’re building something real in AI or SaaS, you shouldn’t have to guess your way through exits and raises.
+          </p>
+          <div class="cta-buttons">
+            <a href="https://forms.zoho.in/mailmaya1/form/PermabullishListYourStartupHere" target="_blank" rel="noopener noreferrer" class="btn btn-primary">List My Startup</a>
+            <a href="mailto:mail@mayaskara.com" target="_blank" class="btn btn-outline">I’m a Buyer</a>
+          </div>
+          <div class="founder-strip">
+            <div class="founder-avatar">P</div>
+            <div>
+              <span class="founder-strip-name">Pranshumaan</span> • ex–Investment Banker now building deal rails for AI & MicroSaaS founders.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="year"></span> Permabullish. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#how-it-works">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
